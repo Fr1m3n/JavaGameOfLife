@@ -15,7 +15,10 @@ public class MainForm {
         TableComponent tableComponent = new TableComponent();
         frame.getContentPane().add(tableComponent);
 
-        frame.setPreferredSize(new Dimension(Table.TABLE_WIDTH * GridRenderer.CELL_SIZE, Table.TABLE_HEIGHT * GridRenderer.CELL_SIZE));
+        frame.setPreferredSize(new Dimension(
+                Table.TABLE_WIDTH * (GridRenderer.CELL_SIZE + 1) ,
+                Table.TABLE_HEIGHT * (GridRenderer.CELL_SIZE + 2)
+        ));
 
         frame.pack();
         frame.setVisible(true);
@@ -24,7 +27,6 @@ public class MainForm {
             while(true) {
                 while (tableComponent.getTable().isHaveNextTick()) {
                     tableComponent.getTable().tick();
-//                tableComponent.getTable().getCell(0,0).getCellStatus().;
                     tableComponent.repaint();
                     try {
                         Thread.sleep(TICK_INTERVAL);
@@ -34,18 +36,12 @@ public class MainForm {
                 }
                 tableComponent.resetTable();
             }
-//            System.out.println("Thread stoped");
         });
         gameThread.start();
     }
 
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                createGUI();
-            }
-        });
+        javax.swing.SwingUtilities.invokeLater(MainForm::createGUI);
     }
 }
