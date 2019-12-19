@@ -7,6 +7,8 @@ import java.awt.*;
 
 public class MainForm {
 
+    public static final int TICK_INTERVAL = 500;
+
     private static void createGUI() {
         JFrame frame = new JFrame("GameOfLife");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,7 +26,7 @@ public class MainForm {
 //                tableComponent.getTable().getCell(0,0).getCellStatus().;
                 tableComponent.repaint();
                 try {
-                    Thread.sleep(300);
+                    Thread.sleep(TICK_INTERVAL);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
