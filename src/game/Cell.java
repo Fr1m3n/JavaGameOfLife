@@ -14,10 +14,12 @@ public class Cell {
         return cellStatus;
     }
 
-    public void checkAndChangeIfNeed(Pair<Integer, Integer> neighbors) {
-        if (cellStatus.check(neighbors)) {
+    public boolean checkAndChangeIfNeed(int aliveNeighbours) {
+        if (cellStatus.check(aliveNeighbours)) {
             changeStatus();
+            return true;
         }
+        return false;
     }
 
     public void changeStatus() {

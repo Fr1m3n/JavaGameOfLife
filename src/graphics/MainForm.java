@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class MainForm {
 
-    public static final int TICK_INTERVAL = 500;
+    public static final int TICK_INTERVAL = 200;
 
     private static void createGUI() {
         JFrame frame = new JFrame("GameOfLife");
@@ -21,16 +21,20 @@ public class MainForm {
         frame.setVisible(true);
         Thread gameThread = new Thread(() -> {
             System.out.println("Thread started");
-            while (true) {
-                tableComponent.getTable().tick();
+            while(true) {
+                while (tableComponent.getTable().isHaveNextTick()) {
+                    tableComponent.getTable().tick();
 //                tableComponent.getTable().getCell(0,0).getCellStatus().;
-                tableComponent.repaint();
-                try {
-                    Thread.sleep(TICK_INTERVAL);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    tableComponent.repaint();
+                    try {
+                        Thread.sleep(TICK_INTERVAL);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
+                tableComponent.resetTable();
             }
+//            System.out.println("Thread stoped");
         });
         gameThread.start();
     }

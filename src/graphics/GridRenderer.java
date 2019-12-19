@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class GridRenderer {
     // длина стороны клетки в пикселях (клетка квадратная)
-    public static final int CELL_SIZE = 50;
+    public static final int CELL_SIZE = 30;
     public static final Color EDGES_COLOR = new Color(0,0,0);
 
     public void render(Graphics2D g, Table table) {

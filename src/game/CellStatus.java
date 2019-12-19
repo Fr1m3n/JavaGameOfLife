@@ -7,14 +7,14 @@ import java.awt.*;
 public enum CellStatus {
     DEAD(new Color(255, 255, 255)) {
         @Override
-        public boolean check(Pair<Integer, Integer> neighbours) {
-            return neighbours.getKey() == 3;
+        public boolean check(int aliveNeighbours) {
+            return aliveNeighbours == 3;
         }
     },
-    ALIVE(new Color(0,0,0)) {
+    ALIVE(new Color(189, 127, 83)) {
         @Override
-        public boolean check(Pair<Integer, Integer> neighbours) {
-            return neighbours.getValue() < 2 || neighbours.getValue() > 3;
+        public boolean check(int aliveNeighbours) {
+            return aliveNeighbours < 2 || aliveNeighbours > 3;
         }
     };
 
@@ -28,7 +28,7 @@ public enum CellStatus {
         return color;
     }
 
-    public boolean check(Pair<Integer, Integer> neighbours) {
+    public boolean check(int aliveNeighbours) {
         return true;
     }
 

@@ -9,6 +9,10 @@ public class TableComponent extends JComponent {
     private Table table;
 
     public TableComponent() {
+        resetTable();
+    }
+
+    public void resetTable() {
         table = new Table();
     }
 
