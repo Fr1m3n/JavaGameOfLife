@@ -25,8 +25,9 @@ public class MainForm {
         Thread gameThread = new Thread(() -> {
             System.out.println("Thread started");
             while(true) {
-                while (tableComponent.getTable().isHaveNextTick()) {
-                    tableComponent.getTable().tick();
+                Table table = tableComponent.getTable();
+                while (table.isHaveNextTick()) {
+                    table.tick();
                     tableComponent.repaint();
                     try {
                         Thread.sleep(TICK_INTERVAL);
